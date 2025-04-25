@@ -1,3 +1,15 @@
+// Wait for DOM to be ready
+window.addEventListener("load", () => {
+  const overlay = document.getElementById("play-music-screen");
+
+  // Global function triggered by the button
+  window.startSite = function () {
+    document.querySelector(".song").play(); // play music
+    overlay.style.display = "none";         // hide overlay
+    animationTimeline();                    // start animation
+  };
+});
+
 // trigger to play music in the background with sweetalert
 window.addEventListener("load", () => {
   Swal.fire({
