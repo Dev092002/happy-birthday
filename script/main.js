@@ -1,22 +1,21 @@
-// trigger to play music in the background with sweetalert
 window.addEventListener("load", () => {
-  Swal.fire({
-    title: "Do you want to play music in the background?",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes",
-    cancelButtonText: "No",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      document.querySelector(".song").play();
-      animationTimeline();
-    } else {
-      animationTimeline();
-    }
-  });
+  const overlay = document.getElementById("play-music-screen");
+
+  window.startSite = function () {
+    const music = document.querySelector(".song");
+    music.muted = false;
+
+    music.play().then(() => {
+      console.log("Music playback started!");
+    }).catch((err) => {
+      console.log("Music playback failed:", err);
+    });
+
+    overlay.style.display = "none"; // Hide the black screen
+    animationTimeline();            // Start the animations
+  };
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const dayElement = document.getElementById("day");

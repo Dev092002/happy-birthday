@@ -19,11 +19,16 @@
 
 <body>
 
-    <audio class="song" loop autoplay>
-        <source src="./music/hbd.mpeg">
-        </source>
+    <audio class="song" loop muted>
+        <source src="./music/hbd.mpeg" />
         Your browser isn't invited for super fun audio time.
     </audio>
+      
+    <!-- Music Consent Overlay -->
+    <div id="play-music-screen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#000000e6;color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;">
+        <p style="font-size: 1.2rem;">Do you want to play birthday music?</p>
+        <button onclick="startSite()" style="padding:10px 20px;font-size:1.2rem;border:none;border-radius:6px;cursor:pointer;background:#4CAF50;color:white;">Yes, Play!</button>
+    </div>
 
     <div class="container">
         <div class="one">
