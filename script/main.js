@@ -1,34 +1,22 @@
-// Wait for DOM to be ready
 window.addEventListener("load", () => {
   const overlay = document.getElementById("play-music-screen");
 
-  // Global function triggered by the button
   window.startSite = function () {
-    document.querySelector(".song").play(); // play music
-    overlay.style.display = "none";         // hide overlay
-    animationTimeline();                    // start animation
+    const music = document.querySelector(".song");
+
+    music.muted = false;
+
+    music.play().then(() => {
+      console.log("Music playback started!");
+    }).catch((err) => {
+      console.log("Music playback failed:", err);
+    });
+
+    overlay.style.display = "none";
+    animationTimeline();
   };
 });
 
-// trigger to play music in the background with sweetalert
-window.addEventListener("load", () => {
-  Swal.fire({
-    title: "Do you want to play music in the background?",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes",
-    cancelButtonText: "No",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      document.querySelector(".song").play();
-      animationTimeline();
-    } else {
-      animationTimeline();
-    }
-  });
-});
 
 document.addEventListener("DOMContentLoaded", function () {
   const dayElement = document.getElementById("day");
